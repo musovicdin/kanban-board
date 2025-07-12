@@ -60,7 +60,7 @@ const Sidebar = () => {
 
   return (
     <div
-      className={`text-grey relative flex h-screen flex-col justify-between bg-white px-4 transition-all duration-100 ${
+      className={`text-grey relative flex h-screen flex-col justify-between bg-white px-4 pt-6 transition-all duration-100 ${
         expanded ? "w-[312px]" : "w-[80px]"
       }`}
     >
