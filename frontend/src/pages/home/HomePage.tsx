@@ -8,6 +8,7 @@ import {
   TasksDue,
 } from "../../components/DashboardTabs"
 import { useState } from "react"
+import ProgressCard from "../../components/ProgressCard"
 
 export const HomePage = () => {
   const [activeTab, setActiveTab] = useState("status")
@@ -34,6 +35,8 @@ export const HomePage = () => {
       <DashboardHeader />
       <DashboardTabs activeTab={activeTab} setActiveTab={setActiveTab} />
       {renderTabContent()}
+
+      <ProgressCard />
     </div>
   )
 }
