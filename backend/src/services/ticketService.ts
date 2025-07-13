@@ -6,10 +6,6 @@ export const getTickets = async () => {
   return prisma.ticket.findMany()
 }
 
-export const getTicket = async (id: number) => {
-  return prisma.ticket.findUnique({ where: { id } })
-}
-
 export const createTicket = async (data: {
   title: string
   description: string

@@ -38,7 +38,7 @@ export const DashboardHeader = ({ onNewTask }: DashboardHeaderProps) => {
 
           <button
             onClick={() => onNewTask?.()}
-            className="flex items-center justify-center rounded-full border border-[#CBD5E1] text-[#475569] transition-colors hover:bg-gray-50"
+            className="flex cursor-pointer items-center justify-center rounded-full border border-[#CBD5E1] text-[#475569] transition-colors hover:bg-gray-50"
             style={{ width: 40, height: 40 }}
           >
             <FaPlus size={20} />

@@ -15,16 +15,13 @@ interface BoardProps {
   initialTaskStatus?: TaskType
 }
 
-const Board = ({
-  isNewTaskModalOpen = false,
-  onCloseNewTaskModal,
-  initialTaskStatus,
-}: BoardProps) => {
+const Board = ({ onCloseNewTaskModal, initialTaskStatus }: BoardProps) => {
   const { moveTask, addTask, deleteTask, getTasksByType } = useTasks()
   const [activeTask, setActiveTask] = useState<Task | null>(null)
   const [modalInitialStatus, setModalInitialStatus] = useState<TaskType>(
     initialTaskStatus || "in-progress",
   )
+  const [isNewTaskModalOpen, setIsNewTaskModalOpen] = useState(false)
 
   const handleDragStart = (event: DragStartEvent) => {
     const { active } = event
@@ -60,9 +57,11 @@ const Board = ({
     priority: TaskPriority
   }) => {
     addTask(data)
+    setIsNewTaskModalOpen(false)
   }
 
   const handleCloseModal = () => {
+    setIsNewTaskModalOpen(false)
     if (onCloseNewTaskModal) {
       onCloseNewTaskModal()
     }
@@ -70,7 +69,7 @@ const Board = ({
 
   const handleAddTaskForStatus = (status: TaskType) => {
     setModalInitialStatus(status)
-    // This would trigger opening the modal - the parent component should handle this
+    setIsNewTaskModalOpen(true)
   }
 
   return (
@@ -81,21 +80,23 @@ const Board = ({
             <InProgressBoardColumn
               tasks={getTasksByType("in-progress")}
               onDeleteTask={deleteTask}
-              onAddTask={handleAddTaskForStatus}
+              onAddTask={() => handleAddTaskForStatus("in-progress")}
+              isNewTaskModalOpen={isNewTaskModalOpen}
+              onCloseNewTaskModal={handleCloseModal}
             />
           </div>
           <div className="min-w-0 flex-1">
             <ReviewedBoardColumn
               tasks={getTasksByType("reviewed")}
               onDeleteTask={deleteTask}
-              onAddTask={handleAddTaskForStatus}
+              onAddTask={() => handleAddTaskForStatus("reviewed")}
             />
           </div>
           <div className="min-w-0 flex-1">
             <CompletedBoardColumn
               tasks={getTasksByType("completed")}
               onDeleteTask={deleteTask}
-              onAddTask={handleAddTaskForStatus}
+              onAddTask={() => handleAddTaskForStatus("completed")}
             />
           </div>
         </div>

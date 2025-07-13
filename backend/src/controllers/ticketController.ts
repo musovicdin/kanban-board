@@ -1,20 +1,10 @@
 import { Request, Response } from "express"
-import { getTickets, getTicket, createTicket, deleteTicket } from "../services/ticketService"
+import { getTickets, createTicket, deleteTicket } from "../services/ticketService"
 import { Status, Priority } from "@prisma/client"
 
 export const getAllTickets = async (req: Request, res: Response) => {
   const tickets = await getTickets()
   res.json(tickets)
-}
-
-export const getSingleTicket = async (req: Request, res: Response) => {
-  const id = Number(req.params.id)
-  const ticket = await getTicket(id)
-  if (ticket) {
-    res.json(ticket)
-  } else {
-    res.status(404).json({ error: "Ticket not found" })
-  }
 }
 
 export const newTicket = async (req: Request, res: Response) => {

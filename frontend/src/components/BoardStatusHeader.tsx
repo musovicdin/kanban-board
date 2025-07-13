@@ -60,7 +60,7 @@ const BoardStatusHeader = ({ type, count, onAddTask }: BoardStatusHeaderProps) =
       </div>
       <button
         onClick={handleAddClick}
-        className="bg-opacity-20 hover:bg-opacity-30 flex h-6 w-6 items-center justify-center rounded-full bg-white transition-colors"
+        className="bg-opacity-20 hover:bg-opacity-30 flex h-6 w-6 cursor-pointer items-center justify-center rounded-full bg-white transition-colors"
       >
         <Plus />
       </button>

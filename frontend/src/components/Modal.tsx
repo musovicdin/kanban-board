@@ -34,7 +34,7 @@ const Modal = ({ isOpen, onClose, title, children }: ModalProps) => {
     <div className="fixed inset-0 z-50 flex items-center justify-center">
       {/* Backdrop */}
       <div
-        className="bg-opacity-50 absolute inset-0 bg-black transition-opacity"
+        className="absolute inset-0 bg-black opacity-40 transition-opacity"
         onClick={onClose}
         aria-hidden="true"
       />

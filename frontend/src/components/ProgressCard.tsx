@@ -92,7 +92,7 @@ const ProgressCard = ({ task, onDelete }: ProgressCardProps) => {
             >
               <button
                 onClick={handleDeleteClick}
-                className="rounded p-1 text-gray-400 transition-colors hover:bg-red-50 hover:text-red-500"
+                className="cursor-pointer rounded p-1 text-gray-400 transition-colors hover:bg-red-50 hover:text-red-500"
                 aria-label="Delete task"
               >
                 <Trash />

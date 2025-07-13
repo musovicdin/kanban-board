@@ -7,6 +7,8 @@ interface InProgressBoardColumnProps {
   tasks: Task[]
   onDeleteTask?: (taskId: string) => void
   onAddTask?: (status: TaskType) => void
+  isNewTaskModalOpen?: boolean
+  onCloseNewTaskModal?: () => void
 }
 
 const InProgressBoardColumn = ({ tasks, onDeleteTask, onAddTask }: InProgressBoardColumnProps) => {
