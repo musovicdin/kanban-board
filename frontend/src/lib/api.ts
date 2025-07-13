@@ -1,22 +1,38 @@
 import axios from "axios"
+import { BASE_URL } from "../constants/enums"
+
+export interface Task {
+  id: string | number
+  title: string
+  description: string
+  priority: string
+  status: string
+}
+
+export interface NewTaskData {
+  title: string
+  description: string
+  priority: string
+  status: string
+}
 
 const api = axios.create({
-  baseURL: "http://localhost:3001/api", // Adjust the port/path as needed
+  baseURL: BASE_URL,
   headers: {
     "Content-Type": "application/json",
   },
 })
 
-// Example: Fetch all tasks
-export const fetchTasks = async () => {
-  const response = await api.get("/tasks")
+export const fetchTasks = async (): Promise<Task[]> => {
+  const response = await api.get("/")
   return response.data
 }
 
-// Example: Create a new task
-export const createTask = async (task: any) => {
-  const response = await api.post("/tasks", task)
+export const createTask = async (task: NewTaskData): Promise<Task> => {
+  const response = await api.post("/createTicket", task)
   return response.data
 }
 
-// Add more API functions as needed
+export const deleteTask = async (id: string | number): Promise<void> => {
+  await api.delete(`/${id}`)
+}
