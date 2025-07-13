@@ -4,7 +4,11 @@ import { FaPlus } from "react-icons/fa6"
 import { GiCardJoker } from "react-icons/gi"
 import { Search } from "./icons/icons"
 
-export const DashboardHeader = () => {
+interface DashboardHeaderProps {
+  onNewTask?: () => void
+}
+
+export const DashboardHeader = ({ onNewTask }: DashboardHeaderProps) => {
   return (
     <div className="flex h-[104px] w-full items-center justify-between px-4">
       <div className="flex items-center gap-2">
@@ -33,8 +37,8 @@ export const DashboardHeader = () => {
           </button>
 
           <button
-            onClick={() => console.log("add")}
-            className="flex items-center justify-center rounded-full border border-[#CBD5E1] text-[#475569]"
+            onClick={() => onNewTask?.()}
+            className="flex items-center justify-center rounded-full border border-[#CBD5E1] text-[#475569] transition-colors hover:bg-gray-50"
             style={{ width: 40, height: 40 }}
           >
             <FaPlus size={20} />

@@ -1,4 +1,5 @@
 import { SortByDropdown } from "./SortByDropdown"
+import Board from "./Board"
 
 type DashboardTabsProps = {
   activeTab: string
@@ -45,10 +46,15 @@ export const ByStatus = () => {
   )
 }
 
-export const ByTotalTasks = () => {
+interface ByTotalTasksProps {
+  isNewTaskModalOpen?: boolean
+  onCloseNewTaskModal?: () => void
+}
+
+export const ByTotalTasks = ({ isNewTaskModalOpen, onCloseNewTaskModal }: ByTotalTasksProps) => {
   return (
-    <div className="bg-white p-4 text-gray-700">
-      <div>25 In progress +</div>
+    <div className="flex-1 bg-[#f8fafc]">
+      <Board isNewTaskModalOpen={isNewTaskModalOpen} onCloseNewTaskModal={onCloseNewTaskModal} />
     </div>
   )
 }

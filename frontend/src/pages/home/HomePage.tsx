@@ -8,17 +8,25 @@ import {
   TasksDue,
 } from "../../components/DashboardTabs"
 import { useState } from "react"
-import ProgressCard from "../../components/ProgressCard"
 
 export const HomePage = () => {
   const [activeTab, setActiveTab] = useState("status")
+  const [isNewTaskModalOpen, setIsNewTaskModalOpen] = useState(false)
+
+  const openNewTaskModal = () => setIsNewTaskModalOpen(true)
+  const closeNewTaskModal = () => setIsNewTaskModalOpen(false)
 
   const renderTabContent = () => {
     switch (activeTab) {
       case "status":
         return <ByStatus />
       case "total":
-        return <ByTotalTasks />
+        return (
+          <ByTotalTasks
+            isNewTaskModalOpen={isNewTaskModalOpen}
+            onCloseNewTaskModal={closeNewTaskModal}
+          />
+        )
       case "due":
         return <TasksDue />
       case "extra":
@@ -31,12 +39,10 @@ export const HomePage = () => {
   }
 
   return (
-    <div className="min-h-screen border border-gray-200 bg-[#f8fafc]">
-      <DashboardHeader />
+    <div className="flex min-h-screen flex-col border border-gray-200 bg-[#f8fafc]">
+      <DashboardHeader onNewTask={openNewTaskModal} />
       <DashboardTabs activeTab={activeTab} setActiveTab={setActiveTab} />
-      {renderTabContent()}
-
-      <ProgressCard />
+      <div className="flex-1">{renderTabContent()}</div>
     </div>
   )
 }
