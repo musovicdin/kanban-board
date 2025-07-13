@@ -1,6 +1,8 @@
 # 🛠 Kanban board (Frontend + Backend --> separated)
 
-
+Demo Videos:
+Frontend: https://www.youtube.com/watch?v=Avpw8dxqPMc
+Backend: https://www.youtube.com/watch?v=kR6b3stgyEc
 
 ---
 
