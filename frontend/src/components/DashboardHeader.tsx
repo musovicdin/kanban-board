@@ -10,9 +10,9 @@ interface DashboardHeaderProps {
 
 export const DashboardHeader = ({ onNewTask }: DashboardHeaderProps) => {
   return (
-    <div className="flex h-[104px] w-full items-center justify-between px-4">
+    <div className="my-[15px] flex h-[104px] w-full flex-col justify-between gap-4 px-4 sm:p-0 sm:px-6 md:my-0 md:flex-row md:items-center lg:gap-0">
       <div className="flex items-center gap-2">
-        <p className="text-[30px] font-bold">Kanban Dashboard</p>
+        <p className="text-[24px] font-bold md:text-[30px]">Kanban Dashboard</p>
         <GiCardJoker className="text-3xl text-[#4F46E5]" />
       </div>
 

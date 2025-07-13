@@ -8,8 +8,6 @@ import {
   TasksDue,
 } from "../../components/DashboardTabs"
 import { useState } from "react"
-import { useAtomValue } from "jotai"
-import { backendTasksAtom } from "../../lib/store"
 
 export const HomePage = () => {
   const [activeTab, setActiveTab] = useState("status")
@@ -17,9 +15,6 @@ export const HomePage = () => {
 
   const openNewTaskModal = () => setIsNewTaskModalOpen(true)
   const closeNewTaskModal = () => setIsNewTaskModalOpen(false)
-
-  const backendTasks = useAtomValue(backendTasksAtom)
-  console.log("Backend tasks in HomePage:", backendTasks)
 
   const renderTabContent = () => {
     switch (activeTab) {
@@ -44,7 +39,7 @@ export const HomePage = () => {
   }
 
   return (
-    <div className="flex min-h-screen flex-col border border-gray-200 bg-[#f8fafc]">
+    <div className="mt-[64px] flex min-h-screen flex-col border border-gray-200 bg-[#f8fafc] sm:mt-0">
       <DashboardHeader onNewTask={openNewTaskModal} />
       <DashboardTabs activeTab={activeTab} setActiveTab={setActiveTab} />
       <div className="flex-1">{renderTabContent()}</div>

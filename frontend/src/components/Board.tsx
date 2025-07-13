@@ -75,7 +75,7 @@ const Board = ({ onCloseNewTaskModal, initialTaskStatus }: BoardProps) => {
   return (
     <>
       <DndContext onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
-        <div className="flex h-full min-h-[600px] gap-6 p-6">
+        <div className="grid h-full min-h-[600px] grid-cols-1 gap-6 p-6 sm:grid-cols-2 lg:grid-cols-3">
           <div className="min-w-0 flex-1">
             <InProgressBoardColumn
               tasks={getTasksByType("in-progress")}
