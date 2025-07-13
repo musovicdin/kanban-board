@@ -30,7 +30,7 @@ const ProgressCard = () => {
                 className="h-8 w-8 rounded-full border-2 border-white"
               />
               <div className="flex flex-row items-center justify-center rounded-full bg-white p-1">
-                <Badge value={3} />
+                <Badge value={"+3"} />
               </div>
             </div>
           </div>
