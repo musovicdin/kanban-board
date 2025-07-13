@@ -16,6 +16,10 @@ export const HomePage = () => {
   const openNewTaskModal = () => setIsNewTaskModalOpen(true)
   const closeNewTaskModal = () => setIsNewTaskModalOpen(false)
 
+  // useEffect(()=>{
+
+  // },[])
+
   const renderTabContent = () => {
     switch (activeTab) {
       case "status":
