@@ -1,24 +1,32 @@
 import { Outlet } from "react-router-dom"
-import { Provider, useAtomValue } from "jotai"
-import { store, loadingAtom, userAtom } from "../lib/store"
+import { Provider, useAtomValue, useSetAtom } from "jotai"
+import { store, loadingAtom, backendTasksAtom } from "../lib/store"
 import { useEffect } from "react"
 import { LoadingIcon } from "../components/icons/icons"
 import Layout from "../pages/Layout"
+import { fetchTasks } from "../lib/api"
 
 export default function App() {
   const loading = useAtomValue(loadingAtom)
-  const user = useAtomValue(userAtom)
+  const setBackendTasks = useSetAtom(backendTasksAtom)
 
-  // Simulate loading and onboarding logic
   useEffect(() => {
-    // In a real app, fetch user data here and update atoms
-    setTimeout(() => {
-      store.set(loadingAtom, false)
-      store.set(userAtom, { name: "Jane Doe", isOnboarded: true })
-    }, 1200)
-  }, [])
+    const loadTasks = async () => {
+      try {
+        const tasks = await fetchTasks()
+        setBackendTasks(tasks)
+        store.set(loadingAtom, false)
+        console.log("Tasks loaded at app level:", tasks)
+      } catch (error) {
+        console.error("Failed to load tasks:", error)
+        store.set(loadingAtom, false)
+      }
+    }
 
-  if (loading || !user) {
+    loadTasks()
+  }, [setBackendTasks])
+
+  if (loading) {
     return (
       <div className="flex h-screen w-full flex-col items-center justify-center gap-1">
         <div role="status">

@@ -8,6 +8,8 @@ import {
   TasksDue,
 } from "../../components/DashboardTabs"
 import { useState } from "react"
+import { useAtomValue } from "jotai"
+import { backendTasksAtom } from "../../lib/store"
 
 export const HomePage = () => {
   const [activeTab, setActiveTab] = useState("status")
@@ -16,9 +18,8 @@ export const HomePage = () => {
   const openNewTaskModal = () => setIsNewTaskModalOpen(true)
   const closeNewTaskModal = () => setIsNewTaskModalOpen(false)
 
-  // useEffect(()=>{
-
-  // },[])
+  const backendTasks = useAtomValue(backendTasksAtom)
+  console.log("Backend tasks in HomePage:", backendTasks)
 
   const renderTabContent = () => {
     switch (activeTab) {
