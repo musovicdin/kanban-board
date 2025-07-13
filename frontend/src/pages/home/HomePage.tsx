@@ -39,10 +39,10 @@ export const HomePage = () => {
   }
 
   return (
-    <div className="mt-[64px] flex min-h-screen flex-col border border-gray-200 bg-[#f8fafc] sm:mt-0">
+    <div className="mt-[64px] flex h-[calc(100vh-64px)] flex-col bg-[#f8fafc] sm:mt-0 sm:h-screen">
       <DashboardHeader onNewTask={openNewTaskModal} />
       <DashboardTabs activeTab={activeTab} setActiveTab={setActiveTab} />
-      <div className="flex-1">{renderTabContent()}</div>
+      <div className="flex-1 overflow-y-auto">{renderTabContent()}</div>
     </div>
   )
 }
